@@ -10,25 +10,24 @@ public class Room
     public string name;
 
     public TcpClient[] clients = new TcpClient[2];
+    public Player[] players = new Player[2];
 
     public ConcurrentQueue<RpcMsg> waitingMsgs = new();
 
-    public Room(string RoomName, TcpClient client1)
+    public Room(create_room_c2s msg, TcpClient client1)
     {
-        name = RoomName;
-
+        name = msg.Name;
         clients[0] = client1;
-        
+        players[0] = msg.Player;
     }
 
-    public void Join(TcpClient client2)
+    public void Join(join_room_c2s msg, TcpClient client2)
     {
         clients[1] = client2;
-
-        GameStart();
+        players[1] = msg.Player;
     }
 
-    private void GameStart()
+    public void GameStart()
     {
         Console.WriteLine("GameStart!");
         Task.Run(() => ReceiveMsg(0));

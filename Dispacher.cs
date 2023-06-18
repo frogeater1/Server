@@ -15,6 +15,7 @@ public static partial class Dispacher
         { ProtoIdx.KeepAlive, KeepAlive.Parser },
         { ProtoIdx.create_room_c2s, create_room_c2s.Parser },
         { ProtoIdx.join_room_c2s, join_room_c2s.Parser },
+        { ProtoIdx.GameStart, GameStart.Parser },
     };
 
     public static void ReceiveRoomMsg(TcpClient client)
@@ -27,10 +28,10 @@ public static partial class Dispacher
             switch (msg)
             {
                 case create_room_c2s data:
-                    RoomManager.CreateRoom(data.Name, client);
+                    RoomManager.CreateRoom(data, client);
                     return;
                 case join_room_c2s data:
-                    RoomManager.JoinRoom(data.Name, client);
+                    RoomManager.JoinRoom(data, client);
                     return;
                 default:
                     Console.WriteLine("ReceiveRoomMsg收到错误的消息: " + msg.GetType() + msg);

@@ -15,6 +15,9 @@ namespace Arknights
         }
 
 
+        /// <summary>
+        /// 不能直接用这个发消息，只能用SendMsg入列，然后由socket中开启的线程自动发出去
+        /// </summary>
         public static void Send(NetworkStream stream, IMessage msg)
         {
             var msg_bytes = msg.ToByteArray();
@@ -43,13 +46,14 @@ namespace Arknights
         {
             return msg switch
             {
-                LogicUpdate => ProtoIdx.LogicUpdate,
-                RpcMsg => ProtoIdx.RpcMsg,
-                KeepAlive => ProtoIdx.KeepAlive,
                 create_room_s2c => ProtoIdx.create_room_s2c,
                 create_room_c2s => ProtoIdx.create_room_c2s,
                 join_room_s2c => ProtoIdx.join_room_s2c,
                 join_room_c2s => ProtoIdx.join_room_c2s,
+                LogicUpdate => ProtoIdx.LogicUpdate,
+                RpcMsg => ProtoIdx.RpcMsg,
+                KeepAlive => ProtoIdx.KeepAlive,
+                GameStart => ProtoIdx.GameStart,
                 _ => throw new System.Exception("未知的消息类型"),
             };
         }
@@ -57,12 +61,13 @@ namespace Arknights
 
     public enum ProtoIdx
     {
-        LogicUpdate = 1000,
-        RpcMsg = 1001,
-        KeepAlive = 1002,
-        create_room_s2c = 1003,
-        create_room_c2s = 1004,
-        join_room_s2c = 1005,
-        join_room_c2s = 1006,
+        create_room_s2c = 1000,
+        create_room_c2s = 1001,
+        join_room_s2c = 1002,
+        join_room_c2s = 1003,
+        GameStart = 1004,
+        LogicUpdate = 2000,
+        RpcMsg = 2001,
+        KeepAlive = 2002,
     }
 }
