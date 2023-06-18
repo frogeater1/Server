@@ -1,2 +1,1 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿Arknights.Server server = new Arknights.Server("127.0.0.1", 13000);
