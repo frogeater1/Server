@@ -36,6 +36,11 @@ namespace Arknights
             stream.Read(rcv_head_bytes, 0, sizeof(int));
             int need_rcv_data_length = BitConverter.ToInt32(rcv_head_bytes, 0);
 
+            if (need_rcv_data_length <= 0)
+            {
+                return Parse(proto_idx, new byte[0]);
+            }
+
             byte[] rcv_data_bytes = new byte[need_rcv_data_length];
             stream.Read(rcv_data_bytes, 0, rcv_data_bytes.Length);
 

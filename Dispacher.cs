@@ -39,4 +39,9 @@ public static partial class Dispacher
             }
         }
     }
+
+    public static void DebugLog(string log)
+    {
+        Console.WriteLine(log + "\n" + Environment.StackTrace);
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Net.Sockets;
 using Google.Protobuf;
 using OnlineGame;
@@ -14,7 +15,7 @@ public static class RoomManager
         NetworkStream stream = client.GetStream();
         if (rooms.ContainsKey(msg.Name))
         {
-            Dispacher.Send(stream, new create_room_s2c { ResCode = (int)ResCode.DuplicateName });
+            Dispacher.Send(stream, new create_room_s2c { ResCode = ResCode.DuplicateName });
             return;
         }
 
@@ -22,8 +23,8 @@ public static class RoomManager
         try
         {
             ResCode res = rooms.TryAdd(msg.Name, room) ? ResCode.Success : ResCode.DuplicateName;
-            Console.WriteLine(res);
-            Dispacher.Send(stream, new create_room_s2c { ResCode = (int)res });
+            Console.WriteLine(new StackTrace());
+            Dispacher.Send(stream, new create_room_s2c { ResCode = res });
         }
         catch (Exception e)
         {
@@ -37,7 +38,7 @@ public static class RoomManager
         NetworkStream stream2 = client2.GetStream();
         if (!rooms.TryGetValue(msg.Name, out Room? room))
         {
-            Dispacher.Send(stream2, new join_room_s2c { ResCode = (int)ResCode.CantFindRoom });
+            Dispacher.Send(stream2, new join_room_s2c { ResCode = ResCode.CantFindRoom });
             return;
         }
 
@@ -46,7 +47,7 @@ public static class RoomManager
             //多线程
             if (room.clients[1] != null)
             {
-                Dispacher.Send(stream2, new join_room_s2c { ResCode = (int)ResCode.RoomIsFull });
+                Dispacher.Send(stream2, new join_room_s2c { ResCode = ResCode.RoomIsFull });
                 return;
             }
 
@@ -73,7 +74,7 @@ public static class RoomManager
             if (!t1.IsCompleted || msg1 is not KeepAlive { Data: 1 })
             {
                 rooms.TryRemove(msg.Name, out _);
-                Dispacher.Send(stream2, new join_room_s2c { ResCode = (int)ResCode.CantFindRoom });
+                Dispacher.Send(stream2, new join_room_s2c { ResCode = ResCode.CantFindRoom });
                 return;
             }
 
@@ -88,12 +89,12 @@ public static class RoomManager
             {
                 Dispacher.Send(room.clients[0].GetStream(), new join_room_s2c
                 {
-                    ResCode = (int)ResCode.Success,
+                    ResCode = ResCode.Success,
                     Player = room.players[1],
                 });
                 Dispacher.Send(stream2, new join_room_s2c
                 {
-                    ResCode = (int)ResCode.Success,
+                    ResCode = ResCode.Success,
                     Player = room.players[0],
                 });
             }
@@ -110,7 +111,7 @@ public static class RoomManager
             var t3 = Task.Run(() => { msg1 = Dispacher.Receive(room.clients[0].GetStream()); });
             var t4 = Task.Run(() => { msg2 = Dispacher.Receive(stream2); });
             Console.WriteLine("start wait gamestart" + DateTime.Now);
-            bool timeout =  Task.WaitAll(new[] { t3, t4 }, 5000);
+            bool timeout = Task.WaitAll(new[] { t3, t4 }, 5000);
             Console.WriteLine("end wait gamestart" + DateTime.Now);
             if (t3.IsCompleted && t4.IsCompleted || (timeout && (t3.IsCompleted || t4.IsCompleted)))
             {
