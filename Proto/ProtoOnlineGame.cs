@@ -36,15 +36,17 @@ namespace OnlineGame {
             "b2dpY1VwZGF0ZRIgCgRScGNzGAEgAygLMhIuT25saW5lR2FtZS5ScGNNc2ci",
             "PQoGUnBjTXNnEgwKBEZyb20YASABKAUSJQoHQ29tbWFuZBgCIAEoCzIULmdv",
             "b2dsZS5wcm90b2J1Zi5BbnkiJQoGUGxheWVyEgwKBE5hbWUYASABKAkSDQoF",
-            "Q2FyZHMYAiADKAUiRgoNQ29tbWFuZF9FbnRlchIRCglMb2dpY1Bvc1gYASAB",
-            "KAUSEQoJTG9naWNQb3NZGAIgASgFEg8KB1NldFR5cGUYAyABKAUiPgoMQ29t",
-            "bWFuZF9FeGl0Eg4KBlBhcmFtMRgBIAEoBRIOCgZQYXJhbTIYAiABKAUSDgoG",
-            "UGFyYW0zGAMgASgFKlUKB1Jlc0NvZGUSCAoETm9uZRAAEgsKB1N1Y2Nlc3MQ",
-            "ARIRCg1EdXBsaWNhdGVOYW1lEAISEAoMQ2FudEZpbmRSb29tEAMSDgoKUm9v",
-            "bUlzRnVsbBAEYgZwcm90bzM="));
+            "Q2FyZHMYAiADKAUicAoNQ29tbWFuZF9FbnRlchIPCgdjYXJkSWR4GAEgASgF",
+            "EhEKCUxvZ2ljUG9zWBgCIAEoBRIRCglMb2dpY1Bvc1kYAyABKAUSKAoJRGly",
+            "ZWN0aW9uGAUgASgOMhUuT25saW5lR2FtZS5EaXJlY3Rpb24iPgoMQ29tbWFu",
+            "ZF9FeGl0Eg4KBlBhcmFtMRgBIAEoBRIOCgZQYXJhbTIYAiABKAUSDgoGUGFy",
+            "YW0zGAMgASgFKlYKB1Jlc0NvZGUSCQoFTm9uZTEQABILCgdTdWNjZXNzEAES",
+            "EQoNRHVwbGljYXRlTmFtZRACEhAKDENhbnRGaW5kUm9vbRADEg4KClJvb21J",
+            "c0Z1bGwQBCo9CglEaXJlY3Rpb24SCQoFTm9uZTIQABIJCgVSaWdodBABEggK",
+            "BERvd24QAhIICgRMZWZ0EAMSBgoCVXAQBGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::OnlineGame.ResCode), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::OnlineGame.ResCode), typeof(global::OnlineGame.Direction), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.create_room_c2s), global::OnlineGame.create_room_c2s.Parser, new[]{ "Name", "Player" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.create_room_s2c), global::OnlineGame.create_room_s2c.Parser, new[]{ "ResCode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.join_room_c2s), global::OnlineGame.join_room_c2s.Parser, new[]{ "Name", "Player" }, null, null, null, null),
@@ -54,7 +56,7 @@ namespace OnlineGame {
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.LogicUpdate), global::OnlineGame.LogicUpdate.Parser, new[]{ "Rpcs" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.RpcMsg), global::OnlineGame.RpcMsg.Parser, new[]{ "From", "Command" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Player), global::OnlineGame.Player.Parser, new[]{ "Name", "Cards" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Enter), global::OnlineGame.Command_Enter.Parser, new[]{ "LogicPosX", "LogicPosY", "SetType" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Enter), global::OnlineGame.Command_Enter.Parser, new[]{ "CardIdx", "LogicPosX", "LogicPosY", "Direction" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Exit), global::OnlineGame.Command_Exit.Parser, new[]{ "Param1", "Param2", "Param3" }, null, null, null, null)
           }));
     }
@@ -63,11 +65,19 @@ namespace OnlineGame {
   }
   #region Enums
   public enum ResCode {
-    [pbr::OriginalName("None")] None = 0,
+    [pbr::OriginalName("None1")] None1 = 0,
     [pbr::OriginalName("Success")] Success = 1,
     [pbr::OriginalName("DuplicateName")] DuplicateName = 2,
     [pbr::OriginalName("CantFindRoom")] CantFindRoom = 3,
     [pbr::OriginalName("RoomIsFull")] RoomIsFull = 4,
+  }
+
+  public enum Direction {
+    [pbr::OriginalName("None2")] None2 = 0,
+    [pbr::OriginalName("Right")] Right = 1,
+    [pbr::OriginalName("Down")] Down = 2,
+    [pbr::OriginalName("Left")] Left = 3,
+    [pbr::OriginalName("Up")] Up = 4,
   }
 
   #endregion
@@ -354,7 +364,7 @@ namespace OnlineGame {
 
     /// <summary>Field number for the "ResCode" field.</summary>
     public const int ResCodeFieldNumber = 1;
-    private global::OnlineGame.ResCode resCode_ = global::OnlineGame.ResCode.None;
+    private global::OnlineGame.ResCode resCode_ = global::OnlineGame.ResCode.None1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::OnlineGame.ResCode ResCode {
@@ -387,7 +397,7 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ResCode != global::OnlineGame.ResCode.None) hash ^= ResCode.GetHashCode();
+      if (ResCode != global::OnlineGame.ResCode.None1) hash ^= ResCode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -406,7 +416,7 @@ namespace OnlineGame {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ResCode);
       }
@@ -420,7 +430,7 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ResCode);
       }
@@ -434,7 +444,7 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ResCode);
       }
       if (_unknownFields != null) {
@@ -449,7 +459,7 @@ namespace OnlineGame {
       if (other == null) {
         return;
       }
-      if (other.ResCode != global::OnlineGame.ResCode.None) {
+      if (other.ResCode != global::OnlineGame.ResCode.None1) {
         ResCode = other.ResCode;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -779,7 +789,7 @@ namespace OnlineGame {
 
     /// <summary>Field number for the "ResCode" field.</summary>
     public const int ResCodeFieldNumber = 1;
-    private global::OnlineGame.ResCode resCode_ = global::OnlineGame.ResCode.None;
+    private global::OnlineGame.ResCode resCode_ = global::OnlineGame.ResCode.None1;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::OnlineGame.ResCode ResCode {
@@ -828,7 +838,7 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (ResCode != global::OnlineGame.ResCode.None) hash ^= ResCode.GetHashCode();
+      if (ResCode != global::OnlineGame.ResCode.None1) hash ^= ResCode.GetHashCode();
       if (player_ != null) hash ^= Player.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -848,7 +858,7 @@ namespace OnlineGame {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ResCode);
       }
@@ -866,7 +876,7 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         output.WriteRawTag(8);
         output.WriteEnum((int) ResCode);
       }
@@ -884,7 +894,7 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (ResCode != global::OnlineGame.ResCode.None) {
+      if (ResCode != global::OnlineGame.ResCode.None1) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ResCode);
       }
       if (player_ != null) {
@@ -902,7 +912,7 @@ namespace OnlineGame {
       if (other == null) {
         return;
       }
-      if (other.ResCode != global::OnlineGame.ResCode.None) {
+      if (other.ResCode != global::OnlineGame.ResCode.None1) {
         ResCode = other.ResCode;
       }
       if (other.player_ != null) {
@@ -2015,9 +2025,10 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Command_Enter(Command_Enter other) : this() {
+      cardIdx_ = other.cardIdx_;
       logicPosX_ = other.logicPosX_;
       logicPosY_ = other.logicPosY_;
-      setType_ = other.setType_;
+      direction_ = other.direction_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2027,8 +2038,20 @@ namespace OnlineGame {
       return new Command_Enter(this);
     }
 
+    /// <summary>Field number for the "cardIdx" field.</summary>
+    public const int CardIdxFieldNumber = 1;
+    private int cardIdx_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CardIdx {
+      get { return cardIdx_; }
+      set {
+        cardIdx_ = value;
+      }
+    }
+
     /// <summary>Field number for the "LogicPosX" field.</summary>
-    public const int LogicPosXFieldNumber = 1;
+    public const int LogicPosXFieldNumber = 2;
     private int logicPosX_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2040,7 +2063,7 @@ namespace OnlineGame {
     }
 
     /// <summary>Field number for the "LogicPosY" field.</summary>
-    public const int LogicPosYFieldNumber = 2;
+    public const int LogicPosYFieldNumber = 3;
     private int logicPosY_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -2051,15 +2074,15 @@ namespace OnlineGame {
       }
     }
 
-    /// <summary>Field number for the "SetType" field.</summary>
-    public const int SetTypeFieldNumber = 3;
-    private int setType_;
+    /// <summary>Field number for the "Direction" field.</summary>
+    public const int DirectionFieldNumber = 5;
+    private global::OnlineGame.Direction direction_ = global::OnlineGame.Direction.None2;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int SetType {
-      get { return setType_; }
+    public global::OnlineGame.Direction Direction {
+      get { return direction_; }
       set {
-        setType_ = value;
+        direction_ = value;
       }
     }
 
@@ -2078,9 +2101,10 @@ namespace OnlineGame {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (CardIdx != other.CardIdx) return false;
       if (LogicPosX != other.LogicPosX) return false;
       if (LogicPosY != other.LogicPosY) return false;
-      if (SetType != other.SetType) return false;
+      if (Direction != other.Direction) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2088,9 +2112,10 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
+      if (CardIdx != 0) hash ^= CardIdx.GetHashCode();
       if (LogicPosX != 0) hash ^= LogicPosX.GetHashCode();
       if (LogicPosY != 0) hash ^= LogicPosY.GetHashCode();
-      if (SetType != 0) hash ^= SetType.GetHashCode();
+      if (Direction != global::OnlineGame.Direction.None2) hash ^= Direction.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2109,17 +2134,21 @@ namespace OnlineGame {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (LogicPosX != 0) {
+      if (CardIdx != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(CardIdx);
+      }
+      if (LogicPosX != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(LogicPosX);
       }
       if (LogicPosY != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(LogicPosY);
       }
-      if (SetType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(SetType);
+      if (Direction != global::OnlineGame.Direction.None2) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) Direction);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2131,17 +2160,21 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (LogicPosX != 0) {
+      if (CardIdx != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(CardIdx);
+      }
+      if (LogicPosX != 0) {
+        output.WriteRawTag(16);
         output.WriteInt32(LogicPosX);
       }
       if (LogicPosY != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(LogicPosY);
       }
-      if (SetType != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(SetType);
+      if (Direction != global::OnlineGame.Direction.None2) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) Direction);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2153,14 +2186,17 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
+      if (CardIdx != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CardIdx);
+      }
       if (LogicPosX != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(LogicPosX);
       }
       if (LogicPosY != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(LogicPosY);
       }
-      if (SetType != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(SetType);
+      if (Direction != global::OnlineGame.Direction.None2) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Direction);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2174,14 +2210,17 @@ namespace OnlineGame {
       if (other == null) {
         return;
       }
+      if (other.CardIdx != 0) {
+        CardIdx = other.CardIdx;
+      }
       if (other.LogicPosX != 0) {
         LogicPosX = other.LogicPosX;
       }
       if (other.LogicPosY != 0) {
         LogicPosY = other.LogicPosY;
       }
-      if (other.SetType != 0) {
-        SetType = other.SetType;
+      if (other.Direction != global::OnlineGame.Direction.None2) {
+        Direction = other.Direction;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2199,15 +2238,19 @@ namespace OnlineGame {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            LogicPosX = input.ReadInt32();
+            CardIdx = input.ReadInt32();
             break;
           }
           case 16: {
-            LogicPosY = input.ReadInt32();
+            LogicPosX = input.ReadInt32();
             break;
           }
           case 24: {
-            SetType = input.ReadInt32();
+            LogicPosY = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Direction = (global::OnlineGame.Direction) input.ReadEnum();
             break;
           }
         }
@@ -2226,15 +2269,19 @@ namespace OnlineGame {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            LogicPosX = input.ReadInt32();
+            CardIdx = input.ReadInt32();
             break;
           }
           case 16: {
-            LogicPosY = input.ReadInt32();
+            LogicPosX = input.ReadInt32();
             break;
           }
           case 24: {
-            SetType = input.ReadInt32();
+            LogicPosY = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            Direction = (global::OnlineGame.Direction) input.ReadEnum();
             break;
           }
         }

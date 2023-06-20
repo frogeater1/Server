@@ -23,12 +23,12 @@ public static class RoomManager
         try
         {
             ResCode res = rooms.TryAdd(msg.Name, room) ? ResCode.Success : ResCode.DuplicateName;
-            Console.WriteLine(new StackTrace());
+            Console.WriteLine("CreateRoom: " + res);
             Dispacher.Send(stream, new create_room_s2c { ResCode = res });
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.StackTrace);
+            Console.WriteLine(e + e.StackTrace);
             throw;
         }
     }

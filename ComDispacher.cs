@@ -13,7 +13,7 @@ namespace Arknights
         {
             return parsers[(ProtoIdx)protoIdx].ParseFrom(bytes);
         }
-
+        
 
         /// <summary>
         /// 不能直接用这个发消息，只能用SendMsg入列，然后由socket中开启的线程自动发出去
@@ -38,7 +38,7 @@ namespace Arknights
 
             if (need_rcv_data_length <= 0)
             {
-                return Parse(proto_idx, new byte[0]);
+                return Parse(proto_idx, Array.Empty<byte>());
             }
 
             byte[] rcv_data_bytes = new byte[need_rcv_data_length];

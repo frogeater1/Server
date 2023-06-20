@@ -36,8 +36,13 @@ public class Room
         t.Interval = 1000f / 60;
         t.Elapsed += (sender, args) =>
         {
-            var rpc_msgs = waitingMsgs.ToArray();
-            waitingMsgs.Clear();
+            RpcMsg[] rpc_msgs;
+            lock (waitingMsgs)
+            {
+                rpc_msgs = waitingMsgs.ToArray();
+                waitingMsgs.Clear();
+            }
+
             var logic_update = new LogicUpdate
             {
                 Rpcs = { rpc_msgs }
@@ -61,6 +66,7 @@ public class Room
         while (true)
         {
             var msg = Dispacher.Receive(stream);
+            Console.WriteLine(msg);
             if (msg is RpcMsg rpcMsg)
             {
                 waitingMsgs.Enqueue(rpcMsg);

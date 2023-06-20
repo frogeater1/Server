@@ -22,7 +22,7 @@ public class Server
         {
             server = new TcpListener(localAddr, this.port);
             server.Start(maxClient);
-
+            
             //接收终端输入
             Task.Run(ConsoleCommand);
 
