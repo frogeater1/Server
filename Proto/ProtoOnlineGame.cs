@@ -38,12 +38,12 @@ namespace OnlineGame {
             "b2dsZS5wcm90b2J1Zi5BbnkiJQoGUGxheWVyEgwKBE5hbWUYASABKAkSDQoF",
             "Q2FyZHMYAiADKAUicAoNQ29tbWFuZF9FbnRlchIPCgdjYXJkSWR4GAEgASgF",
             "EhEKCUxvZ2ljUG9zWBgCIAEoBRIRCglMb2dpY1Bvc1kYAyABKAUSKAoJRGly",
-            "ZWN0aW9uGAUgASgOMhUuT25saW5lR2FtZS5EaXJlY3Rpb24iPgoMQ29tbWFu",
-            "ZF9FeGl0Eg4KBlBhcmFtMRgBIAEoBRIOCgZQYXJhbTIYAiABKAUSDgoGUGFy",
-            "YW0zGAMgASgFKlYKB1Jlc0NvZGUSCQoFTm9uZTEQABILCgdTdWNjZXNzEAES",
-            "EQoNRHVwbGljYXRlTmFtZRACEhAKDENhbnRGaW5kUm9vbRADEg4KClJvb21J",
-            "c0Z1bGwQBCo9CglEaXJlY3Rpb24SCQoFTm9uZTIQABIJCgVSaWdodBABEggK",
-            "BERvd24QAhIICgRMZWZ0EAMSBgoCVXAQBGIGcHJvdG8z"));
+            "ZWN0aW9uGAUgASgOMhUuT25saW5lR2FtZS5EaXJlY3Rpb24iHwoMQ29tbWFu",
+            "ZF9FeGl0Eg8KB2NhcmRJZHgYASABKAUqVgoHUmVzQ29kZRIJCgVOb25lMRAA",
+            "EgsKB1N1Y2Nlc3MQARIRCg1EdXBsaWNhdGVOYW1lEAISEAoMQ2FudEZpbmRS",
+            "b29tEAMSDgoKUm9vbUlzRnVsbBAEKj0KCURpcmVjdGlvbhIJCgVOb25lMhAA",
+            "EgkKBVJpZ2h0EAESCAoERG93bhACEggKBExlZnQQAxIGCgJVcBAEYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::OnlineGame.ResCode), typeof(global::OnlineGame.Direction), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,7 +57,7 @@ namespace OnlineGame {
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.RpcMsg), global::OnlineGame.RpcMsg.Parser, new[]{ "From", "Command" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Player), global::OnlineGame.Player.Parser, new[]{ "Name", "Cards" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Enter), global::OnlineGame.Command_Enter.Parser, new[]{ "CardIdx", "LogicPosX", "LogicPosY", "Direction" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Exit), global::OnlineGame.Command_Exit.Parser, new[]{ "Param1", "Param2", "Param3" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Exit), global::OnlineGame.Command_Exit.Parser, new[]{ "CardIdx" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2325,9 +2325,7 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Command_Exit(Command_Exit other) : this() {
-      param1_ = other.param1_;
-      param2_ = other.param2_;
-      param3_ = other.param3_;
+      cardIdx_ = other.cardIdx_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2337,39 +2335,15 @@ namespace OnlineGame {
       return new Command_Exit(this);
     }
 
-    /// <summary>Field number for the "Param1" field.</summary>
-    public const int Param1FieldNumber = 1;
-    private int param1_;
+    /// <summary>Field number for the "cardIdx" field.</summary>
+    public const int CardIdxFieldNumber = 1;
+    private int cardIdx_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Param1 {
-      get { return param1_; }
+    public int CardIdx {
+      get { return cardIdx_; }
       set {
-        param1_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Param2" field.</summary>
-    public const int Param2FieldNumber = 2;
-    private int param2_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Param2 {
-      get { return param2_; }
-      set {
-        param2_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "Param3" field.</summary>
-    public const int Param3FieldNumber = 3;
-    private int param3_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Param3 {
-      get { return param3_; }
-      set {
-        param3_ = value;
+        cardIdx_ = value;
       }
     }
 
@@ -2388,9 +2362,7 @@ namespace OnlineGame {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Param1 != other.Param1) return false;
-      if (Param2 != other.Param2) return false;
-      if (Param3 != other.Param3) return false;
+      if (CardIdx != other.CardIdx) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2398,9 +2370,7 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Param1 != 0) hash ^= Param1.GetHashCode();
-      if (Param2 != 0) hash ^= Param2.GetHashCode();
-      if (Param3 != 0) hash ^= Param3.GetHashCode();
+      if (CardIdx != 0) hash ^= CardIdx.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2419,17 +2389,9 @@ namespace OnlineGame {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Param1 != 0) {
+      if (CardIdx != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Param1);
-      }
-      if (Param2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Param2);
-      }
-      if (Param3 != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Param3);
+        output.WriteInt32(CardIdx);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2441,17 +2403,9 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Param1 != 0) {
+      if (CardIdx != 0) {
         output.WriteRawTag(8);
-        output.WriteInt32(Param1);
-      }
-      if (Param2 != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Param2);
-      }
-      if (Param3 != 0) {
-        output.WriteRawTag(24);
-        output.WriteInt32(Param3);
+        output.WriteInt32(CardIdx);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2463,14 +2417,8 @@ namespace OnlineGame {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Param1 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Param1);
-      }
-      if (Param2 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Param2);
-      }
-      if (Param3 != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Param3);
+      if (CardIdx != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CardIdx);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2484,14 +2432,8 @@ namespace OnlineGame {
       if (other == null) {
         return;
       }
-      if (other.Param1 != 0) {
-        Param1 = other.Param1;
-      }
-      if (other.Param2 != 0) {
-        Param2 = other.Param2;
-      }
-      if (other.Param3 != 0) {
-        Param3 = other.Param3;
+      if (other.CardIdx != 0) {
+        CardIdx = other.CardIdx;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2509,15 +2451,7 @@ namespace OnlineGame {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Param1 = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Param2 = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            Param3 = input.ReadInt32();
+            CardIdx = input.ReadInt32();
             break;
           }
         }
@@ -2536,15 +2470,7 @@ namespace OnlineGame {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Param1 = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Param2 = input.ReadInt32();
-            break;
-          }
-          case 24: {
-            Param3 = input.ReadInt32();
+            CardIdx = input.ReadInt32();
             break;
           }
         }
