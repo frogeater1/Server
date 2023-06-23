@@ -39,11 +39,11 @@ namespace OnlineGame {
             "Q2FyZHMYAiADKAUicAoNQ29tbWFuZF9FbnRlchIPCgdjYXJkSWR4GAEgASgF",
             "EhEKCUxvZ2ljUG9zWBgCIAEoBRIRCglMb2dpY1Bvc1kYAyABKAUSKAoJRGly",
             "ZWN0aW9uGAUgASgOMhUuT25saW5lR2FtZS5EaXJlY3Rpb24iHwoMQ29tbWFu",
-            "ZF9FeGl0Eg8KB2NhcmRJZHgYASABKAUqVgoHUmVzQ29kZRIJCgVOb25lMRAA",
-            "EgsKB1N1Y2Nlc3MQARIRCg1EdXBsaWNhdGVOYW1lEAISEAoMQ2FudEZpbmRS",
-            "b29tEAMSDgoKUm9vbUlzRnVsbBAEKj0KCURpcmVjdGlvbhIJCgVOb25lMhAA",
-            "EgkKBVJpZ2h0EAESCAoERG93bhACEggKBExlZnQQAxIGCgJVcBAEYgZwcm90",
-            "bzM="));
+            "ZF9FeGl0Eg8KB2NhcmRJZHgYASABKAUiIAoNQ29tbWFuZF9Ta2lsbBIPCgdj",
+            "YXJkSWR4GAEgASgFKlYKB1Jlc0NvZGUSCQoFTm9uZTEQABILCgdTdWNjZXNz",
+            "EAESEQoNRHVwbGljYXRlTmFtZRACEhAKDENhbnRGaW5kUm9vbRADEg4KClJv",
+            "b21Jc0Z1bGwQBCo9CglEaXJlY3Rpb24SCQoFTm9uZTIQABIJCgVSaWdodBAB",
+            "EggKBERvd24QAhIICgRMZWZ0EAMSBgoCVXAQBGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::OnlineGame.ResCode), typeof(global::OnlineGame.Direction), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -57,7 +57,8 @@ namespace OnlineGame {
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.RpcMsg), global::OnlineGame.RpcMsg.Parser, new[]{ "From", "Command" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Player), global::OnlineGame.Player.Parser, new[]{ "Name", "Cards" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Enter), global::OnlineGame.Command_Enter.Parser, new[]{ "CardIdx", "LogicPosX", "LogicPosY", "Direction" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Exit), global::OnlineGame.Command_Exit.Parser, new[]{ "CardIdx" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Exit), global::OnlineGame.Command_Exit.Parser, new[]{ "CardIdx" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::OnlineGame.Command_Skill), global::OnlineGame.Command_Skill.Parser, new[]{ "CardIdx" }, null, null, null, null)
           }));
     }
     #endregion
@@ -2429,6 +2430,195 @@ namespace OnlineGame {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void MergeFrom(Command_Exit other) {
+      if (other == null) {
+        return;
+      }
+      if (other.CardIdx != 0) {
+        CardIdx = other.CardIdx;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            CardIdx = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            CardIdx = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Command_Skill : pb::IMessage<Command_Skill>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Command_Skill> _parser = new pb::MessageParser<Command_Skill>(() => new Command_Skill());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Command_Skill> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::OnlineGame.ProtoOnlineGameReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Command_Skill() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Command_Skill(Command_Skill other) : this() {
+      cardIdx_ = other.cardIdx_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Command_Skill Clone() {
+      return new Command_Skill(this);
+    }
+
+    /// <summary>Field number for the "cardIdx" field.</summary>
+    public const int CardIdxFieldNumber = 1;
+    private int cardIdx_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CardIdx {
+      get { return cardIdx_; }
+      set {
+        cardIdx_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Command_Skill);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Command_Skill other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (CardIdx != other.CardIdx) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (CardIdx != 0) hash ^= CardIdx.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (CardIdx != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(CardIdx);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (CardIdx != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(CardIdx);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (CardIdx != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CardIdx);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Command_Skill other) {
       if (other == null) {
         return;
       }
